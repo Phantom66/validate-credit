@@ -14,7 +14,7 @@ public class RequestPresenter {
     private RequestServiceImpl requestServiceImpl;
 
     //Para probar el servicio
-    private final String DOCUMENT_USUARIO = "20044824";
+    private final String DOCUMENT_USUARIO = "123456789";
 
     public ResponseModel<Boolean> idCredit() {
         ResponseModel<Boolean> responseModel = null;
