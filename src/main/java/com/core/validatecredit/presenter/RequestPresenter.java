@@ -22,10 +22,12 @@ public class RequestPresenter {
         log.info("PRESENTER- {}", IS_NO_REQUEST);
         if (IS_NO_REQUEST) {
             responseModel = new ResponseModel<Boolean>("00", "El cliente No tiene solicitud", IS_NO_REQUEST);
+
         } else {
             log.info("INGRESANDO IS_REQUEST");
-            final boolean STATUS_CREDIT = requestServiceImpl.isCredit(DOCUMENT_USUARIO).get().equalsIgnoreCase("Pagado");
-            log.info(requestServiceImpl.isCredit(DOCUMENT_USUARIO).get());
+            final boolean STATUS_CREDIT = requestServiceImpl.isCredit(DOCUMENT_USUARIO).isPresent()
+                    ? requestServiceImpl.isCredit(DOCUMENT_USUARIO).get().equalsIgnoreCase("Pagado")
+                    : false;
             if (STATUS_CREDIT)
                 responseModel = new ResponseModel<Boolean>("00", "Estatus crédito pagado", STATUS_CREDIT);
             else
